@@ -58,7 +58,7 @@ def downloadImages(initialPost):
                     img.screenshot(path + filename)
                     print("Success: " + filename + " -> Downloaded")
                     repeatedPosts = 0
-                time.sleep(1)
+                time.sleep(3)
             except:
                 print("Error: " + title + " -> Not an image")
         try:
@@ -88,7 +88,7 @@ def switchUrl(ord):
 
 while(True):
     downloadImages(post)
-    time.sleep(5)
+    time.sleep(3600)
     print("----------------------- Delay time completed, resuming -----------------------")
 
     if(ordinal == 3):
