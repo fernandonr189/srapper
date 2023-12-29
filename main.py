@@ -34,8 +34,6 @@ driver.implicitly_wait(5)
 
 post = driver.find_element(by=By.XPATH, value='//*[@id="AppRouter-main-content"]/div/div/div[2]/div[4]/div[1]/div[5]/div[2]')
 
-counter = 0
-
 def downloadImages(initialPost):
     post = initialPost
     limitExceeded = False
@@ -58,8 +56,7 @@ def downloadImages(initialPost):
                     repeatedPosts += 1
                 else:
                     img.screenshot(path + filename)
-                    print("Success: " + filename + " -> Downloaded" + "(" + str(counter) + ")")
-                    counter += 1
+                    print("Success: " + filename + " -> Downloaded")
                     repeatedPosts = 0
                 time.sleep(1)
             except:
