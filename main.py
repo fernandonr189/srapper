@@ -76,12 +76,15 @@ ordinal = 1
 
 def switchUrl(ord):
     if(ord == 1):
+        print("Sorting by: Hot")
         url = 'https://www.reddit.com/r/Nudes/hot/'
         driver.get(url)
     elif(ord == 2):
+        print("Sorting by: New")
         url = 'https://www.reddit.com/r/Nudes/new/'
         driver.get(url)
     elif(ord == 3):
+        print("Sorting by: Top(today)")
         url = 'https://www.reddit.com/r/Nudes/top/?t=day'
         driver.get(url)
 
@@ -99,4 +102,12 @@ while(True):
 
     driver.implicitly_wait(15)
     time.sleep(15)
-    post = driver.find_element(by=By.XPATH, value='//*[@id="AppRouter-main-content"]/div/div/div[2]/div[4]/div[1]/div[5]/div[2]')
+
+    try:
+        post = driver.find_element(by=By.XPATH, value='//*[@id="AppRouter-main-content"]/div/div/div[2]/div[4]/div[1]/div[5]/div[2]')
+    except:
+        print("----------------------- Error, trying again in 60 seconds -----------------------")
+        time.sleep(60)
+        switchUrl(ordinal)
+        time.sleep(15)
+        post = driver.find_element(by=By.XPATH, value='//*[@id="AppRouter-main-content"]/div/div/div[2]/div[4]/div[1]/div[5]/div[2]')
